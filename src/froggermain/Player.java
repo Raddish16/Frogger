@@ -10,12 +10,15 @@ package froggermain;
  * @author Yasuki
  */
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public  class Player extends Creature{
-private Game game;
+    private Game game;
+    private BufferedImage playerImage;
     public Player(Game game, float x, float y) {
         super(x, y);
         this.game = game;
+        playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
     }
 
     @Override
@@ -42,8 +45,9 @@ private Game game;
 
     @Override
     public void render(Graphics graph) {
-        graph.setColor(Color.cyan);
-        graph.fillRect((int)x,(int)y,20,20);
+        graph.drawImage(playerImage,(int)x,(int)y,null);
+      //graph.setColor(Color.cyan);
+      //graph.fillRect((int)x,(int)y,20,20);
 
     }
 }
