@@ -18,7 +18,8 @@ public class FroggerMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new Game("Frogger",600,400);
+        Game game = new Game("Frogger",600,400);
+        game.start();
     }
     
 }
