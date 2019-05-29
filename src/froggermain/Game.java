@@ -31,7 +31,7 @@ public class Game implements Runnable {
     private State gameState;
 
     private KeyManager km;
-
+    
     public Game(String title, int width, int height)
     {
         this.width = width;
@@ -52,10 +52,9 @@ public class Game implements Runnable {
     }
 
 
-    int x; //temp code
+    int x =0; //temp code
     private void tick()
     {
-        
         km.tick();
         x+=1; //temp code
         if (State.getState() != null)
@@ -86,7 +85,7 @@ public class Game implements Runnable {
         graph.drawImage(image,x ,221 , null);
         graph.drawImage(image,x ,23 , null);
         graph.drawImage(image,x ,345 , null);
-        
+                
         if (State.getState() != null)
         {
             State.getState().render(graph);
