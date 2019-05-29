@@ -19,7 +19,7 @@ public class Display {
 
     private String title;
     private int width, height; //measuered in pixels
-
+    
     public Display(String title, int width, int height)
     {
         this.title = title;
@@ -36,7 +36,7 @@ public class Display {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null); //Sets location to center
         frame.setVisible(true);
-
+        
         canvas = new Canvas(); //Creates canvas object
         canvas.setPreferredSize(new Dimension(width, height));
         canvas.setMaximumSize(new Dimension(width, height));
@@ -45,7 +45,7 @@ public class Display {
 
         frame.add(canvas);
         frame.pack();
-
+        
     }
 
     public Canvas getCanvas()
@@ -56,5 +56,5 @@ public class Display {
     public JFrame getFrame()
     {
         return frame;
-    }
+    } 
 }

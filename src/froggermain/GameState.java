@@ -24,7 +24,7 @@ public class GameState extends State {
 
     }
 
-    @Override
+    @Override//not neccesary but informs compiler of overidden method, may prevent error
     public void tick() {
         player.tick();
 

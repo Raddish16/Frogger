@@ -45,9 +45,9 @@ public class Game implements Runnable {
     {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(km);
-        image = imageLoader.loadImage("/textures/New Piskel-2.png"); //Temporary code to show graphics
+        image = imageLoader.loadImage("/textures/New Piskel-2.png"); //temp code to show graphics
         gameState = new GameState(this);
-        State.setState(gameState);
+        State.setState(gameState);//current state(tick and render) set to gameState
         
     }
 
