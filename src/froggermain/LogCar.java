@@ -30,9 +30,7 @@ public class LogCar{
             length = (int)(Math.random()*2) + 1;
         }
         
-    }
-    
-    
+    }    
     
     public LogCar( boolean log){
         
@@ -48,15 +46,14 @@ public class LogCar{
         return length;
     }
 
-   
     public void spawnTime(int y) {
         every = y;
     }
-
     
     public void setDirection(boolean isR) {
         moveRight = isR;
     }
+    
     public boolean getDirection(){
         return moveRight;
     }
@@ -67,5 +64,9 @@ public class LogCar{
    
     public boolean getAlive() {
         return isAlive;
+    }
+    
+    public boolean getLog(){
+        return isLog;
     }
 }
