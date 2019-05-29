@@ -71,6 +71,11 @@ public class LogCar extends Entity{
     
     public void setDirection(boolean isR) {
         moveRight = isR;
+        if(!isR)
+            image = imageLoader.loadImage("/textures/carleft.png");
+        else
+            image = imageLoader.loadImage("/textures/car.pmg.png");
+
     }
     
     public boolean getDirection(){
