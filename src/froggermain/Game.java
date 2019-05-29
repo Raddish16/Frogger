@@ -52,10 +52,12 @@ public class Game implements Runnable {
     }
 
 
-
+    int x; //temp code
     private void tick()
     {
+        
         km.tick();
+        x+=1; //temp code
         if (State.getState() != null)
         {
             State.getState().tick();
@@ -80,10 +82,11 @@ public class Game implements Runnable {
         graph.drawImage(image,450 ,120 , null);
         graph.drawImage(image,450 ,220 , null);
         graph.drawImage(image,450 ,320 , null);
-        graph.drawImage(image,223 ,123 , null);
-        graph.drawImage(image,332 ,221 , null);
-        graph.drawImage(image,135 ,23 , null);
-        graph.drawImage(image,123 ,345 , null);
+        graph.drawImage(image,x ,123 , null);
+        graph.drawImage(image,x ,221 , null);
+        graph.drawImage(image,x ,23 , null);
+        graph.drawImage(image,x ,345 , null);
+        
         if (State.getState() != null)
         {
             State.getState().render(graph);
@@ -104,16 +107,17 @@ public class Game implements Runnable {
         double tickTime = 1000000000/ fps; // time in nano seconds to execute tick and render
         double delta = 0;
         long now;
-        long lastTime = System.nanoTime();
+        long lastTime = System.nanoTime();//current time of computer in nanoseconds
         long timer = 0;
         int ticks = 0;
 
         while(running){
             now = System.nanoTime();
-            delta += (now - lastTime) / tickTime;
-            timer += now - lastTime;
+            delta += (now - lastTime) / tickTime;//adds amount of time since line last ran, div by max time allowed
+            timer += now - lastTime;//adds amount of time passed since lina above last ran
             lastTime = now;
 
+            //if the time accumulates to over 1, need to tick and render to maintain framerate
             if (delta >= 1) {
                 tick();
                 render();
