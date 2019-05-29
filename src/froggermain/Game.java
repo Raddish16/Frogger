@@ -45,9 +45,10 @@ public class Game implements Runnable {
     {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(km);
-
+        image = imageLoader.loadImage("/textures/New Piskel-2.png"); //Temporary code to show graphics
         gameState = new GameState(this);
         State.setState(gameState);
+        
     }
 
 
@@ -73,7 +74,16 @@ public class Game implements Runnable {
         graph = bStrat.getDrawGraphics();//Draws stuff to screen
 
         graph.clearRect(0,0,width,height);
-
+        
+        //temp code to show graphics
+        graph.drawImage(image,450 ,20 , null);
+        graph.drawImage(image,450 ,120 , null);
+        graph.drawImage(image,450 ,220 , null);
+        graph.drawImage(image,450 ,320 , null);
+        graph.drawImage(image,223 ,123 , null);
+        graph.drawImage(image,332 ,221 , null);
+        graph.drawImage(image,135 ,23 , null);
+        graph.drawImage(image,123 ,345 , null);
         if (State.getState() != null)
         {
             State.getState().render(graph);
