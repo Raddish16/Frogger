@@ -68,26 +68,26 @@ public  class Player extends Creature{
                 inMoveCount = 0;
             }
         }
-        if(game.getKeyManager().u&&!inMove&&tickCountMove>1)//keep in mind that the graph is inverted
+        if(game.getKeyManager().u&&!inMove&&tickCountMove>30)//keep in mind that the graph is inverted
         {
             thisKey = "u";
             inMove = true;
             tickCountMove = 0;
             
         }
-        if(game.getKeyManager().d&&!inMove&&tickCountMove>1)
+        if(game.getKeyManager().d&&!inMove&&tickCountMove>30)
         {
             thisKey = "d";
             inMove = true;
             tickCountMove = 0;
         }
-        if(game.getKeyManager().l&&!inMove&&tickCountMove>1)
+        if(game.getKeyManager().l&&!inMove&&tickCountMove>30)
         {
             thisKey = "l";
             inMove = true;
             tickCountMove = 0;
         }
-        if(game.getKeyManager().r&&!inMove&&tickCountMove>1)
+        if(game.getKeyManager().r&&!inMove&&tickCountMove>30)
         {
             thisKey = "r";
             inMove = true;
