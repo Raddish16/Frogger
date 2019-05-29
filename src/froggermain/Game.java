@@ -77,14 +77,7 @@ public class Game implements Runnable {
         graph.clearRect(0,0,width,height);
         
         //temp code to show graphics
-        graph.drawImage(image,450 ,20 , null);
-        graph.drawImage(image,450 ,120 , null);
-        graph.drawImage(image,450 ,220 , null);
-        graph.drawImage(image,450 ,320 , null);
-        graph.drawImage(image,x ,123 , null);
-        graph.drawImage(image,x ,221 , null);
-        graph.drawImage(image,x ,23 , null);
-        graph.drawImage(image,x ,345 , null);
+  
                 
         if (State.getState() != null)
         {
