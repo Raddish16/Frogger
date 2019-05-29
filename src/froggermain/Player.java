@@ -35,7 +35,7 @@ public  class Player extends Creature{
         tickCountMove++;
         
         if(inMove){
-            playerImage = imageLoader.loadImage("/textures/carleft.png");
+            playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
             if(thisKey.equals("u"))
                 y-=2;
             if(thisKey.equals("d"))
