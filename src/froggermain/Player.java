@@ -35,43 +35,59 @@ public  class Player extends Creature{
         tickCountMove++;
         
         if(inMove){
-            playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
-            if(thisKey.equals("u"))
+            
+            if(thisKey.equals("u")){
+                playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
                 y-=2;
-            if(thisKey.equals("d"))
+            }if(thisKey.equals("d")){
+                playerImage = imageLoader.loadImage("/textures/FrogJumpDown.png.png");
                 y+=2;
-            if(thisKey.equals("l"))
+            }if(thisKey.equals("l")){
+                playerImage = imageLoader.loadImage("/textures/FrogJumpLeft.png.png");
                 x-=2;
-            if(thisKey.equals("r"))
+            }if(thisKey.equals("r")){
+                playerImage = imageLoader.loadImage("/textures/FrogJumpRight.png.png");
                 x+=2;
+            }
+            
             inMoveCount++;
+            
             if(inMoveCount>20){
-                playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
+                
+                if(thisKey.equals("u")){
+                    playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
+                }if(thisKey.equals("d")){
+                    playerImage = imageLoader.loadImage("/textures/FrogDown.png.png");
+                }if(thisKey.equals("l")){
+                    playerImage = imageLoader.loadImage("/textures/FrogLeft.png.png");
+                }if(thisKey.equals("r")){
+                    playerImage = imageLoader.loadImage("/textures/FrogRight.png.png");
+                }
+                
                 inMove = false;
                 inMoveCount = 0;
             }
         }
-        
-        if(game.getKeyManager().u&&tickCountMove>60)//keep in mind that the graph is inverted
+        if(game.getKeyManager().u&&!inMove&&tickCountMove>1)//keep in mind that the graph is inverted
         {
             thisKey = "u";
             inMove = true;
             tickCountMove = 0;
             
         }
-        if(game.getKeyManager().d&&tickCountMove>80)
+        if(game.getKeyManager().d&&!inMove&&tickCountMove>1)
         {
             thisKey = "d";
             inMove = true;
             tickCountMove = 0;
         }
-        if(game.getKeyManager().l&&tickCountMove>80)
+        if(game.getKeyManager().l&&!inMove&&tickCountMove>1)
         {
             thisKey = "l";
             inMove = true;
             tickCountMove = 0;
         }
-        if(game.getKeyManager().r&&tickCountMove>80)
+        if(game.getKeyManager().r&&!inMove&&tickCountMove>1)
         {
             thisKey = "r";
             inMove = true;

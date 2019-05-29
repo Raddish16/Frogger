@@ -9,7 +9,7 @@ package froggermain;
  *
  * @author 770771
  */
-public class Lines {
+/*public class Lines {
     LogCar LC;
     boolean[] arry;
     boolean isBlank;
@@ -44,3 +44,4 @@ public class Lines {
     
     
 }
+*/

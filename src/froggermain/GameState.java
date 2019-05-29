@@ -30,17 +30,19 @@ public class GameState extends State {
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
     public void tick() {
-        player.tick();
+       
         logcar.tick();
         logcar2.tick();
+         player.tick();
 
     }
 
     @Override
     public void render(Graphics graph) {
-        player.render(graph);
+        
         logcar.render(graph);
         logcar2.render(graph);
+        player.render(graph);
 
     }
 }

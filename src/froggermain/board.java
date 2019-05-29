@@ -9,7 +9,7 @@ package froggermain;
  *
  * @author 770771
  */
-public class board {
+/*public class board {
     Lines[] gameBoard;
     public int width;
     public int height;
@@ -33,3 +33,4 @@ public class board {
     
    
 }
+*/
