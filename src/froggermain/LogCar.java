@@ -27,16 +27,19 @@ public class LogCar extends Entity{
     
     public LogCar(Game game, float x, float y){
         super(x,y);
-        image = imageLoader.loadImage("/textures/New Piskel-2.png");
         every = 10000;
         moveRight = true;
         counter = 0;
         
         if(Math.random()>=.5){
             isLog = true;
+            image = imageLoader.loadImage("/textures/New Piskel-2.png");
+
             
         }else{
             isLog = false;
+            image = imageLoader.loadImage("/textures/car.png.png");
+
         }
         
         if(isLog){
