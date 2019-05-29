@@ -35,6 +35,7 @@ public  class Player extends Creature{
         tickCountMove++;
         
         if(inMove){
+            playerImage = imageLoader.loadImage("/textures/carleft.png");
             if(thisKey.equals("u"))
                 y-=2;
             if(thisKey.equals("d"))
@@ -45,6 +46,7 @@ public  class Player extends Creature{
                 x+=2;
             inMoveCount++;
             if(inMoveCount>20){
+                playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
                 inMove = false;
                 inMoveCount = 0;
             }
