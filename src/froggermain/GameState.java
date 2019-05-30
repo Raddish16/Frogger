@@ -17,13 +17,14 @@ public class GameState extends State {
     private Player player;
     
     ArrayList<LogCar> carlog = new ArrayList<LogCar>();
-
+    private int tickCount;
 
     public GameState(Game game)
     {
         
         super(game);
         player = new Player(game,game.width/2,game.height - 20);
+        tickCount =0;
         
         addLC();
         addLC();
@@ -40,7 +41,12 @@ public class GameState extends State {
         }
         player.tick();
         
-
+        //for spawing logcar, may need to move code to another class
+        tickCount++;
+        if(tickCount>(int)((Math.random()*50)+60)){
+            addLC();
+            tickCount = 0;
+        }
     }
 
     @Override
