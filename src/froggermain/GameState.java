@@ -43,7 +43,7 @@ public class GameState extends State {
         
         //for spawing logcar, may need to move code to another class
         tickCount++;
-        if(tickCount>(int)((Math.random()*50)+60)){
+        if(tickCount>(int)((Math.random()*50)+40)){
             addLC();
             tickCount = 0;
         }
