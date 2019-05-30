@@ -10,11 +10,13 @@ package froggermain;
  * @author Yasuki
  */
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameState extends State {
 
     private Player player;
-    private LogCar logcar,logcar2;
+    
+    ArrayList<LogCar> carlog = new ArrayList<LogCar>();
 
 
     public GameState(Game game)
@@ -22,27 +24,45 @@ public class GameState extends State {
         
         super(game);
         player = new Player(game,game.width/2,game.height - 20);
-        logcar = new LogCar(game,0,300);
-        logcar2 = new LogCar(game,game.width,150);
-        logcar2.setDirection(false);
-
+        
+        addLC();
+        addLC();
+        addLC();
+        
+        
     }
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
     public void tick() {
        
-        logcar.tick();
-        logcar2.tick();
-         player.tick();
+        for(int x = 0; x< carlog.size(); x++){
+            carlog.get(x).tick();
+        }
+        player.tick();
+        
 
     }
 
     @Override
     public void render(Graphics graph) {
+        for(int x = 0; x< carlog.size(); x++){
+            carlog.get(x).render(graph);
+        }
         
-        logcar.render(graph);
-        logcar2.render(graph);
         player.render(graph);
-
+        
+    }
+    
+    public void addLC(){
+        int position = 50*(int)((Math.random()*10)+1);
+        
+        if(Math.random() >= .5){
+            carlog.add(new LogCar(game, 0, position));
+            carlog.get(carlog.size() -1).setDirection(true);
+        }else{
+            carlog.add(new LogCar(game, game.width, position));
+            carlog.get(carlog.size() - 1).setDirection(false);
+        }
+        
     }
 }
