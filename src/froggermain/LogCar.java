@@ -73,7 +73,7 @@ public class LogCar extends Entity {
             if (!isR) {
                 image = imageLoader.loadImage("/textures/carleft.png");
             } else {
-                image = imageLoader.loadImage("/textures/car.pmg.png");
+                image = imageLoader.loadImage("/textures/car.png.png");
             }
 
         } else {
