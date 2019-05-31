@@ -23,6 +23,7 @@ public class LogCar extends Entity {
     public int every;
     public boolean moveRight;
     public boolean isAlive;
+    public int speed = (int) (Math.random() * 4) + 3;
 
     public LogCar(Game game, float x, float y) {
         super(x, y);
@@ -101,9 +102,9 @@ public class LogCar extends Entity {
         counter++;
 
         if (getDirection()) {
-            x += 3;
+            x += speed;
         } else {
-            x -= 3;
+            x -= speed;
         }
 
     }
@@ -112,4 +113,9 @@ public class LogCar extends Entity {
     public void render(Graphics graph) {
         graph.drawImage(image, (int) x, (int) y, null);
     }
+    
+    public LogCar getLC(){
+        return this;
+    }
+    
 }
