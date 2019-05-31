@@ -77,7 +77,7 @@ public class LogCar extends Entity {
             }
 
         } else {
-            image = imageLoader.loadImage("/textures/New Piskel-2.png");
+            image = imageLoader.loadImage("/textures/Log2-1.png.png");
         }
     }
 
