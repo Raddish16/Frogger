@@ -20,6 +20,7 @@ public  class Player extends Creature{
     private int tickCountMove,inMoveCount;
     private boolean inMove;
     private String thisKey;
+    private int jumpDistance;
     
     public Player(Game game, float x, float y) {
         super(x, y);
@@ -29,6 +30,8 @@ public  class Player extends Creature{
         inMove = false;
         inMoveCount = 0;
         thisKey = null;
+        jumpDistance =0;
+        
     }
     
     @Override
@@ -40,6 +43,7 @@ public  class Player extends Creature{
             if(thisKey.equals("u")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
                 y-=5;
+                jumpDistance+=5;
             }if(thisKey.equals("d")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpDown.png.png");
                 y+=5;
