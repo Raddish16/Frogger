@@ -20,6 +20,7 @@ public  class Player extends Creature{
     private int tickCountMove,inMoveCount;
     private boolean inMove;
     private String thisKey;
+    
     public Player(Game game, float x, float y) {
         super(x, y);
         this.game = game;
