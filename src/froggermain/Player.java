@@ -39,16 +39,16 @@ public  class Player extends Creature{
             
             if(thisKey.equals("u")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
-                y-=2;
+                y-=5;
             }if(thisKey.equals("d")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpDown.png.png");
-                y+=2;
+                y+=5;
             }if(thisKey.equals("l")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpLeft.png.png");
-                x-=2;
+                x-=5;
             }if(thisKey.equals("r")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpRight.png.png");
-                x+=2;
+                x+=5;
             }
             
             inMoveCount++;
