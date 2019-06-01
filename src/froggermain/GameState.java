@@ -22,7 +22,7 @@ public class GameState extends State {
     public GameState(Game game) {
 
         super(game);
-        player = new Player(game, game.width / 2, game.height - 20);
+        player = new Player(game, game.width / 2, game.height-16);
         tickCount = 0;
 
         for(int x = 0; x < 7; x++){

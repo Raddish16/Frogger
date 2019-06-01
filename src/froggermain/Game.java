@@ -76,7 +76,10 @@ public class Game implements Runnable {
 
         graph.clearRect(0,0,width,height);
         
-        //temp code to show graphics
+        //temp code to show graphics line
+        for(int x = 100;x<800;x+=100)
+            graph.drawLine(0, x, 1400, x);
+        
   
                 
         if (State.getState() != null)

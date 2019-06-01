@@ -57,7 +57,7 @@ public  class Player extends Creature{
             
             inMoveCount++;
             
-            if(inMoveCount>20){
+            if(inMoveCount>=20){
                 
                 if(thisKey.equals("u")){
                     playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
