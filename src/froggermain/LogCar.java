@@ -24,6 +24,7 @@ public class LogCar extends Entity {
     public boolean moveRight;
     public boolean isAlive;
     public int speed = (int) (Math.random() * 4) + 3;
+    public static int[] posarr = new int[8];
 
     public LogCar(Game game, float x, float y) {
         super(x, y);
@@ -47,7 +48,7 @@ public class LogCar extends Entity {
         } else {
             length = (int) (Math.random() * 2) + 1;
         }
-
+        posarr[(int)y/100]++;
     }
 
     public LogCar(Game game, float x, float y, boolean log) {
@@ -106,7 +107,7 @@ public class LogCar extends Entity {
         } else {
             x -= speed;
         }
-
+        
     }
 
     @Override
@@ -118,4 +119,18 @@ public class LogCar extends Entity {
         return this;
     }
     
+    public float getPosition(){
+        return super.y;
+    }
+    
+    public float getX(){
+        return super.x;
+    }
+    
+    public void setPosition(float newpos){
+        super.setPosition(newpos);
+    }
+    public void setX(float thenumbergetsreallybigsometimes){
+        super.setX(thenumbergetsreallybigsometimes);
+    }
 }

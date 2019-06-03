@@ -17,6 +17,7 @@ public class GameState extends State {
     private Player player;
 
     ArrayList<LogCar> carlog = new ArrayList<LogCar>();
+    
     private int tickCount;
 
     public GameState(Game game) {
@@ -27,6 +28,7 @@ public class GameState extends State {
 
         for(int x = 0; x < 7; x++){
             addLC(100 + x*100);
+            
         }
     }
 
@@ -40,10 +42,17 @@ public class GameState extends State {
 
         //for spawing logcar, may need to move code to another class
         tickCount++;
-        if (tickCount > (int) ((Math.random() * 50) + 40)) {
-            
-           tickCount = 0;
+        for (int x = 0; x < carlog.size(); x++) {
+            if(carlog.get(x).getX() > game.width && carlog.get(x).getDirection()){
+                carlog.get(x).setX(0);
+            }else if(carlog.get(x).getX() < 0 && !carlog.get(x).getDirection()){
+                carlog.get(x).setX(game.width);
+            }
         }
+        if(Math.random() > .5){
+            spawn();
+        }
+        
     }
 
     @Override
@@ -62,10 +71,27 @@ public class GameState extends State {
         if (Math.random() >= .5) {
             carlog.add(new LogCar(game, 0, position));
             carlog.get(carlog.size() - 1).setDirection(true);
+            
         } else {
             carlog.add(new LogCar(game, game.width, position));
             carlog.get(carlog.size() - 1).setDirection(false);
         }
-
+       
+    }
+    
+    public void spawn(){
+        
+        for (int x = 0; x < carlog.size(); x++) {
+            if(Math.random() > .3 && carlog.get(x).getX() > 128 && carlog.get(x).getDirection()){
+                LogCar saki = carlog.get(x).getLC();
+                if(saki.getDirection()){
+                    saki.setX(0);
+                }else{
+                    saki.setX(game.width);
+                }
+                carlog.add(saki);
+            }
+        }
+        
     }
 }

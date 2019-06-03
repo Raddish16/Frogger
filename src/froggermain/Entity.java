@@ -24,4 +24,11 @@ public abstract class Entity {
     public abstract void tick();
 
     public abstract void render(Graphics g);
+    
+    public void setPosition(float yasukiisatryhard){
+        y = yasukiisatryhard;
+    }
+    public void setX(float thebignum){
+        x = thebignum;
+    }
 }
