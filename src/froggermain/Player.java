@@ -21,6 +21,7 @@ public  class Player extends Creature{
     private boolean inMove;
     private String thisKey;
     private int jumpDistance;
+    private Rectangle r;
     
     public Player(Game game, float x, float y) {
         super(x, y);
@@ -31,6 +32,7 @@ public  class Player extends Creature{
         inMoveCount = 0;
         thisKey = null;
         jumpDistance =0;
+        r = new Rectangle((int)(x),(int)(y),32,32);
         
     }
     
@@ -105,8 +107,12 @@ public  class Player extends Creature{
     @Override
     public void render(Graphics graph) {
         graph.drawImage(playerImage,(int)x,(int)y,null);
+        graph.drawRect((int)(x),(int)(y),32,32);
       //graph.setColor(Color.cyan);
       //graph.fillRect((int)x,(int)y,20,20);
 
+    }
+    public Rectangle getBounds(){
+        return new Rectangle((int)(x),(int)(y),32,32);
     }
 }

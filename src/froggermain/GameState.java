@@ -39,7 +39,14 @@ public class GameState extends State {
             carlog.get(x).tick();
         }
         player.tick();
-
+        for(LogCar l:carlog){
+            if (l.getBounds().intersects(player.getBounds())){
+                System.out.println("collide");
+                player.y = game.height-16;
+                player.x = game.width/2;
+            }
+            
+        }
         //for spawing logcar, may need to move code to another class
         tickCount++;
         for (int x = 0; x < carlog.size(); x++) {

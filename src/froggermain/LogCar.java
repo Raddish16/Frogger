@@ -6,6 +6,7 @@
 package froggermain;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
@@ -25,6 +26,7 @@ public class LogCar extends Entity {
     public boolean isAlive;
     public int speed = (int) (Math.random() * 4) + 3;
     public static int[] posarr = new int[8];
+    private Rectangle r;
 
     public LogCar(Game game, float x, float y) {
         super(x, y);
@@ -32,7 +34,7 @@ public class LogCar extends Entity {
         moveRight = true;
         counter = 0;
         double rando = Math.random();
-
+        r = new Rectangle((int)x+5,(int)y+19,52,25);
         if (rando >= .5) {
             isLog = true;
             image = imageLoader.loadImage("/textures/New Piskel-2.png");
@@ -113,6 +115,7 @@ public class LogCar extends Entity {
     @Override
     public void render(Graphics graph) {
         graph.drawImage(image, (int) x, (int) y, null);
+        graph.drawRect((int)x+5,(int)y+19,52,25);
     }
     
     public LogCar getLC(){
@@ -132,5 +135,8 @@ public class LogCar extends Entity {
     }
     public void setX(float thenumbergetsreallybigsometimes){
         super.setX(thenumbergetsreallybigsometimes);
+    }
+    public Rectangle getBounds(){
+        return new Rectangle((int)x+5,(int)y+19,52,25);
     }
 }
