@@ -23,6 +23,8 @@ public  class Player extends Creature{
     private int jumpDistance;
     private Rectangle r;
     
+    
+    
     public Player(Game game, float x, float y) {
         super(x, y);
         this.game = game;

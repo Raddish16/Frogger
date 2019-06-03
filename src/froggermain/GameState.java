@@ -10,6 +10,7 @@ package froggermain;
  * @author Yasuki
  */
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class GameState extends State {
@@ -17,11 +18,13 @@ public class GameState extends State {
     private Player player;
     private Game gam;
     ArrayList<LogCar> carlog = new ArrayList<LogCar>();
-    
     private int tickCount;
-
+    private float deathX,deathY;
+    private boolean deathOccured;
+    private BufferedImage i;
+    
     public GameState(Game game) {
-
+        
         super(game);
         player = new Player(game, game.width / 2, game.height-16);
         tickCount = 0;
@@ -30,6 +33,7 @@ public class GameState extends State {
             addLC(100 + x*100);
             
         }
+        deathOccured = false;
     }
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
@@ -40,10 +44,23 @@ public class GameState extends State {
         }
         player.tick();
         for(LogCar l:carlog){
+            float xHolder;
+            float yHolder;
             if (l.getBounds().intersects(player.getBounds())){
                 System.out.println("collide");
                 player.setInMove(false);
                 player.setCountZero();
+                deathOccured = true;
+                
+                i = imageLoader.loadImage("/textures/FrogDead.png.png");
+                xHolder = player.x;
+                yHolder = player.y;
+                deathX = xHolder;
+                deathY = yHolder;
+                xHolder = 0;
+                yHolder = 0;
+               
+                
                 player.y = game.height-16;
                 player.x = game.width/2;
             }
@@ -69,9 +86,11 @@ public class GameState extends State {
         for (int x = 0; x < carlog.size(); x++) {
             carlog.get(x).render(graph);
         }
-
+        
         player.render(graph);
-
+        if(deathOccured){
+            graph.drawImage(i,(int)deathX,(int)deathY,null);
+        }
     }
 
     public void addLC(int pos) {
