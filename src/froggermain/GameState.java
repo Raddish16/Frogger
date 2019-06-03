@@ -83,14 +83,15 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics graph) {
+        if(deathOccured){
+            graph.drawImage(i,(int)deathX,(int)deathY,null);
+        }
         for (int x = 0; x < carlog.size(); x++) {
             carlog.get(x).render(graph);
         }
         
         player.render(graph);
-        if(deathOccured){
-            graph.drawImage(i,(int)deathX,(int)deathY,null);
-        }
+        
     }
 
     public void addLC(int pos) {
