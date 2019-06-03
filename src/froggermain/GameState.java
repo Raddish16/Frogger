@@ -22,6 +22,7 @@ public class GameState extends State {
     private float deathX,deathY;
     private boolean deathOccured;
     private BufferedImage i;
+    private BufferedImage i2;
     
     public GameState(Game game) {
         
@@ -34,6 +35,8 @@ public class GameState extends State {
             
         }
         deathOccured = false;
+        i = imageLoader.loadImage("/textures/FrogDead.png.png");
+        i2 = imageLoader.loadImage("/textures/Tracks-1.png.png");
     }
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
@@ -52,7 +55,7 @@ public class GameState extends State {
                 player.setCountZero();
                 deathOccured = true;
                 
-                i = imageLoader.loadImage("/textures/FrogDead.png.png");
+                
                 xHolder = player.x;
                 yHolder = player.y;
                 deathX = xHolder;
@@ -85,6 +88,7 @@ public class GameState extends State {
     public void render(Graphics graph) {
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
+            //graph.drawImage(i2,(int)deathX,(int)deathY,null);
         }
         for (int x = 0; x < carlog.size(); x++) {
             carlog.get(x).render(graph);
