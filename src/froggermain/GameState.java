@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class GameState extends State {
 
     private Player player;
-
+    private Game gam;
     ArrayList<LogCar> carlog = new ArrayList<LogCar>();
     
     private int tickCount;
@@ -25,7 +25,7 @@ public class GameState extends State {
         super(game);
         player = new Player(game, game.width / 2, game.height-16);
         tickCount = 0;
-
+        gam = game;
         for(int x = 0; x < 7; x++){
             addLC(100 + x*100);
             
@@ -42,6 +42,8 @@ public class GameState extends State {
         for(LogCar l:carlog){
             if (l.getBounds().intersects(player.getBounds())){
                 System.out.println("collide");
+                player.setInMove(false);
+                player.setCountZero();
                 player.y = game.height-16;
                 player.x = game.width/2;
             }

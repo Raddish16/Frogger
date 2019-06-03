@@ -115,4 +115,11 @@ public  class Player extends Creature{
     public Rectangle getBounds(){
         return new Rectangle((int)(x),(int)(y),32,32);
     }
+    public void setInMove(boolean setter){
+        inMove = setter;
+    }
+    public void setCountZero(){
+        inMoveCount = 0;
+        
+    }
 }
