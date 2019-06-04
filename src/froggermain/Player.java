@@ -134,7 +134,7 @@ public  class Player extends Creature{
         }if(thisKey.equals("l")){
             return imageLoader.loadImage("/textures/FrogDeadLeft.png");    
         }if(thisKey.equals("r")){
-            return imageLoader.loadImage("/textures/FrogDeadLeft.png");    
+            return imageLoader.loadImage("/textures/FrogDeadRight.png");    
         }return imageLoader.loadImage("/textures/FrogDead.png.png");
         
     }
