@@ -185,4 +185,8 @@ public class LogCar extends Entity {
     public int getPAr(){
         return posarr[(int)getPosition()];
     }
+    public int getSpeed(){
+        
+        return speed;
+    }
 }

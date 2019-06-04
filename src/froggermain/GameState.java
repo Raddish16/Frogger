@@ -50,22 +50,37 @@ public class GameState extends State {
             float xHolder;
             float yHolder;
             if (l.getBounds().intersects(player.getBounds())){
-                System.out.println("collide");
-                player.setInMove(false);
-                player.setCountZero();
-                deathOccured = true;
-                i = player.loadDeath();
-                
-                xHolder = player.x;
-                yHolder = player.y;
-                deathX = xHolder;
-                deathY = yHolder;
-                xHolder = 0;
-                yHolder = 0;
-               
-                
-                player.y = game.height+20;
-                player.x = game.width/2;
+                if(!l.getLog()){    
+                    System.out.println("collide");
+                    player.setInMove(false);
+                    player.setCountZero();
+                    deathOccured = true;
+                    i = player.loadDeath();
+
+                    xHolder = player.x;
+                    yHolder = player.y;
+                    deathX = xHolder;
+                    deathY = yHolder;
+                    xHolder = 0;
+                    yHolder = 0;
+
+
+                    player.y = game.height+20;
+                    player.x = game.width/2;
+                }
+                else{
+                    if(!player.getInMove()){
+                        if (l.moveRight){
+                            player.setOnLogSpeed(l);
+                            player.setOnRight(true);
+                        }
+                        else{
+                            player.setOnLogSpeed(l);
+                            player.setOnLeft(true);
+                        }
+                    }
+                    
+                }
             }
             
         }

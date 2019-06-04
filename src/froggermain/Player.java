@@ -21,8 +21,8 @@ public  class Player extends Creature{
     private boolean inMove;
     private String thisKey;
     private int jumpDistance;
-    
-    
+    private boolean onLeft, onRight;
+    private int logSpeed;
     
     public Player(Game game, float x, float y) {
         super(x, y);
@@ -81,6 +81,8 @@ public  class Player extends Creature{
             thisKey = "u";
             inMove = true;
             tickCountMove = 0;
+            onRight = false;
+            onLeft = false;
             
         }
         if(game.getKeyManager().d&&!inMove&&tickCountMove>30)
@@ -88,20 +90,31 @@ public  class Player extends Creature{
             thisKey = "d";
             inMove = true;
             tickCountMove = 0;
+            onRight = false;
+            onLeft = false;
         }
         if(game.getKeyManager().l&&!inMove&&tickCountMove>30)
         {
             thisKey = "l";
             inMove = true;
             tickCountMove = 0;
+            onRight = false;
+            onLeft = false;
         }
         if(game.getKeyManager().r&&!inMove&&tickCountMove>30)
         {
             thisKey = "r";
             inMove = true;
             tickCountMove = 0;
+            onRight = false;
+            onLeft = false;
         }
-       
+        if(onLeft){
+            x-=logSpeed;
+        }
+        if(onRight){
+            x+=logSpeed;
+        }
 
     }
 
@@ -114,12 +127,23 @@ public  class Player extends Creature{
     public Rectangle getBounds(){
         return new Rectangle((int)(x),(int)(y),32,32);
     }
+    public boolean getInMove(){
+        return inMove;
+    }
     public void setInMove(boolean setter){
         inMove = setter;
     }
     public void setCountZero(){
         inMoveCount = 0;
-        
+    }
+    public void setOnLeft(boolean l){
+        onLeft = l;
+    }
+    public void setOnLogSpeed(LogCar l){
+        logSpeed = l.getSpeed();
+    }
+    public void setOnRight(boolean r){
+        onRight = r;
     }
     public String getKey(){
         return thisKey;
