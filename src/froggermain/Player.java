@@ -109,8 +109,6 @@ public  class Player extends Creature{
     public void render(Graphics graph) {
         graph.drawImage(playerImage,(int)x,(int)y,null);
         graph.drawRect((int)(x),(int)(y),32,32);
-      //graph.setColor(Color.cyan);
-      //graph.fillRect((int)x,(int)y,20,20);
 
     }
     public Rectangle getBounds(){
