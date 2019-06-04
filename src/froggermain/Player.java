@@ -21,7 +21,6 @@ public  class Player extends Creature{
     private boolean inMove;
     private String thisKey;
     private int jumpDistance;
-    private Rectangle r;
     
     
     
@@ -34,7 +33,7 @@ public  class Player extends Creature{
         inMoveCount = 0;
         thisKey = null;
         jumpDistance =0;
-        r = new Rectangle((int)(x),(int)(y),32,32);
+        
         
     }
     
@@ -122,6 +121,21 @@ public  class Player extends Creature{
     }
     public void setCountZero(){
         inMoveCount = 0;
+        
+    }
+    public String getKey(){
+        return thisKey;
+    }
+    public BufferedImage loadDeath(){
+        if(thisKey.equals("u")){
+            return imageLoader.loadImage("/textures/FrogDead.png.png");
+        }if(thisKey.equals("d")){
+            return imageLoader.loadImage("/textures/FrogDeadDown.png");    
+        }if(thisKey.equals("l")){
+            return imageLoader.loadImage("/textures/FrogDeadLeft.png");    
+        }if(thisKey.equals("r")){
+            return imageLoader.loadImage("/textures/FrogDeadLeft.png");    
+        }return imageLoader.loadImage("/textures/FrogDead.png.png");
         
     }
 }
