@@ -27,7 +27,7 @@ public class GameState extends State {
     public GameState(Game game) {
         
         super(game);
-        player = new Player(game, game.width / 2, game.height-16);
+        player = new Player(game, game.width / 2, game.height+20);
         tickCount = 0;
         gam = game;
         for(int x = 0; x < 7; x++){
@@ -54,7 +54,7 @@ public class GameState extends State {
                 player.setInMove(false);
                 player.setCountZero();
                 deathOccured = true;
-                
+                i = player.loadDeath();
                 
                 xHolder = player.x;
                 yHolder = player.y;
