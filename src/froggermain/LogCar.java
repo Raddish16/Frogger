@@ -25,7 +25,7 @@ public class LogCar extends Entity {
     public boolean moveRight;
     public boolean isAlive;
     public int speed = (int) (Math.random() * 4) + 3;
-    public static int[] posarr = new int[8];
+    public static int[] posarr = new int[800];
     private Rectangle r;
 
     public LogCar(Game game, float x, float y) {
@@ -50,7 +50,7 @@ public class LogCar extends Entity {
         } else {
             length = (int) (Math.random() * 2) + 1;
         }
-        posarr[(int)y/100]++;
+        posarr[(int)y]++;
     }
 
     public LogCar(Game game, float x, float y, boolean log) {
@@ -61,8 +61,51 @@ public class LogCar extends Entity {
         } else {
             length = (int) (Math.random() * 2) + 1;
         }
+        
+        every = 10000;
+        moveRight = true;
+        counter = 0;
+        
+        r = new Rectangle((int)x+5,(int)y+19,52,25);
+        if (isLog) {
+            image = imageLoader.loadImage("/textures/New Piskel-2.png");
+        } else {
+            image = imageLoader.loadImage("/textures/car.png.png");
+        }
+
+        if (isLog) {
+            length = (int) (Math.random() * 3) + 3;
+        } else {
+            length = (int) (Math.random() * 2) + 1;
+        }
+        posarr[(int)y]++;
     }
 
+    public LogCar(Game game, float x, float y, boolean log, int spd, boolean dirck) {
+        super(x, y);
+        isLog = log;
+        speed = spd;
+        moveRight = dirck;
+        every = 10000;
+        
+        counter = 0;
+        
+        r = new Rectangle((int)x+5,(int)y+19,52,25);
+        
+        if (isLog) {
+            image = imageLoader.loadImage("/textures/New Piskel-2.png");
+        } else {
+            image = imageLoader.loadImage("/textures/car.png.png");
+        }
+
+        if (isLog) {
+            length = (int) (Math.random() * 3) + 3;
+        } else {
+            length = (int) (Math.random() * 2) + 1;
+        }
+        posarr[(int)y]++;
+    }
+    
     public int getLength() {
         return length;
     }
@@ -140,6 +183,6 @@ public class LogCar extends Entity {
         return new Rectangle((int)x+5,(int)y+19,52,25);
     }
     public int getPAr(){
-        return posarr[(int)getPosition()/100];
+        return posarr[(int)getPosition()];
     }
 }
