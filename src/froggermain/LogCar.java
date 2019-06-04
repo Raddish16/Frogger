@@ -139,4 +139,7 @@ public class LogCar extends Entity {
     public Rectangle getBounds(){
         return new Rectangle((int)x+5,(int)y+19,52,25);
     }
+    public int getPAr(){
+        return posarr[(int)getPosition()/100];
+    }
 }
