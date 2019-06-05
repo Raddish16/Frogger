@@ -27,7 +27,7 @@ public class GameState extends State {
     public GameState(Game game) {
         
         super(game);
-        player = new Player(game, game.width / 2, game.height+16);
+        player = new Player(game, game.width / 2, game.height-38);
         tickCount = 0;
         gam = game;
         for(int x = 0; x < 14; x++){
@@ -65,7 +65,7 @@ public class GameState extends State {
                     yHolder = 0;
 
 
-                    player.y = game.height+16;
+                    player.y = game.height- 38;
                     player.x = game.width/2;
                 }
                 else{
