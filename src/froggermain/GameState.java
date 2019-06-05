@@ -23,6 +23,7 @@ public class GameState extends State {
     private boolean deathOccured;
     private BufferedImage i;
     private BufferedImage i2;
+    private Color road, water, end;
     
     public GameState(Game game) {
         
@@ -37,6 +38,9 @@ public class GameState extends State {
         deathOccured = false;
         i = imageLoader.loadImage("/textures/FrogDead.png.png");
         i2 = imageLoader.loadImage("/textures/Tracks-1.png.png");
+        road = new Color(32,32,32);
+        water = new Color(0,0,204);
+        end = new Color(0,204,0);
     }
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
@@ -102,15 +106,19 @@ public class GameState extends State {
     public void render(Graphics graph) {
          for(int y = 0;y<14;y+=1){
             if(carlog.get(y).getLog()){
-                graph.setColor(Color.blue);
+                graph.setColor(water);
                 graph.fillRect(0, y*50+50, 1400, 50);
             
             }else if(!carlog.get(y).getLog()){
-                graph.setColor(Color.black);
+                graph.setColor(road);
                 graph.fillRect(0, y*50+50, 1400, 50);
             
-                
-        }}
+            }
+         }
+        graph.setColor(end);
+        graph.fillRect(0, 0, 1400, 50);
+        graph.fillRect(1350, 0, 1400, 50);
+        
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
             
