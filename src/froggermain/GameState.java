@@ -27,7 +27,7 @@ public class GameState extends State {
     public GameState(Game game) {
         
         super(game);
-        player = new Player(game, game.width / 2, game.height+20);
+        player = new Player(game, game.width / 2, game.height+16);
         tickCount = 0;
         gam = game;
         for(int x = 0; x < 14; x++){
@@ -65,7 +65,7 @@ public class GameState extends State {
                     yHolder = 0;
 
 
-                    player.y = game.height+20;
+                    player.y = game.height+16;
                     player.x = game.width/2;
                 }
                 else{
@@ -100,13 +100,13 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics graph) {
-        /* for(int y = 0;y<7;y+=1){
+        for(int y = 0;y<14;y+=1){
             if(carlog.get(y).getLog()){
                 graph.setColor(Color.blue);
-                graph.fillRect(0, y*100+80, 1400, 100);
+                graph.fillRect(0, y*50+50, 1400, 50);
             
             }
-        }*/
+        }
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
             
