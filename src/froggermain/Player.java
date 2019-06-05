@@ -22,7 +22,7 @@ public  class Player extends Creature{
     private String thisKey;
     private int jumpDistance;
     private boolean onLeft, onRight;
-    private int logSpeed;
+    private int logSpeed,score;
     
     public Player(Game game, float x, float y) {
         super(x, y);
@@ -33,7 +33,7 @@ public  class Player extends Creature{
         inMoveCount = 0;
         thisKey = null;
         jumpDistance =0;
-        
+        score = 0;
         
     }
     
@@ -77,6 +77,7 @@ public  class Player extends Creature{
         }
         if(game.getKeyManager().u&&!inMove&&tickCountMove>10)//keep in mind that the graph is inverted
         {
+            score++;
             thisKey = "u";
             inMove = true;
             tickCountMove = 0;
@@ -86,6 +87,7 @@ public  class Player extends Creature{
         }
         if(game.getKeyManager().d&&!inMove&&tickCountMove>10)
         {
+            score--;
             thisKey = "d";
             inMove = true;
             tickCountMove = 0;
@@ -163,6 +165,13 @@ public  class Player extends Creature{
         }if(thisKey.equals("r")){
             return imageLoader.loadImage("/textures/FrogDeadRight.png");    
         }return imageLoader.loadImage("/textures/FrogDead.png.png");
+        
+    }
+    public int getScore(){
+        return score;
+    }
+    public void resetScore(){
+        score = 0;
         
     }
 }

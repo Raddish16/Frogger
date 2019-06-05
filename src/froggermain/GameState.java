@@ -78,6 +78,7 @@ public class GameState extends State {
 
                     player.y = game.height-38;
                     player.x = game.width/2;
+                    player.resetScore();
                 }
                 else{
                     if(!player.getInMove()){
@@ -111,6 +112,7 @@ public class GameState extends State {
 
                 player.y = game.height+10;
                 player.x = game.width/2;
+                player.resetScore();
             }
         }
         tickCount++;
@@ -154,6 +156,8 @@ public class GameState extends State {
             
         }
         player.render(graph);
+        graph.setColor(Color.white);
+        graph.drawString("Score: "+player.getScore(), 50, 25);
         
     }
 
