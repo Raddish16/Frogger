@@ -158,7 +158,6 @@ public class LogCar extends Entity {
     @Override
     public void render(Graphics graph) {
         graph.drawImage(image, (int) x, (int) y, null);
-        graph.drawRect((int)x+5,(int)y+19,52,25);
     }
     
     public LogCar getLC(){

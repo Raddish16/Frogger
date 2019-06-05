@@ -122,7 +122,6 @@ public  class Player extends Creature{
     @Override
     public void render(Graphics graph) {
         graph.drawImage(playerImage,(int)x,(int)y,null);
-        graph.drawRect((int)(x),(int)(y),32,32);
 
     }
     public Rectangle getBounds(){

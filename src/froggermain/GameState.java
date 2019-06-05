@@ -143,7 +143,7 @@ public class GameState extends State {
          }
         graph.setColor(end);
         graph.fillRect(0, 0, 1400, 50);
-        graph.fillRect(1350, 0, 1400, 50);
+        graph.fillRect(0, 750, 1400, 50);
         
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
