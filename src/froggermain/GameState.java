@@ -100,13 +100,13 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics graph) {
-        /* for(int y = 0;y<7;y+=1){
+         for(int y = 0;y<14;y+=1){
             if(carlog.get(y).getLog()){
                 graph.setColor(Color.blue);
                 graph.fillRect(0, y*100+80, 1400, 100);
             
             }
-        }*/
+        }
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
             
