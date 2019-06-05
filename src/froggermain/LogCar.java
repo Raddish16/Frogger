@@ -35,7 +35,7 @@ public class LogCar extends Entity {
         counter = 0;
         double rando = Math.random();
         r = new Rectangle((int)x+5,(int)y+19,52,25);
-        if (rando >= .5) {
+        if (rando >= .6) {
             isLog = true;
             image = imageLoader.loadImage("/textures/New Piskel-2.png");
 

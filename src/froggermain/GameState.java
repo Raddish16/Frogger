@@ -30,8 +30,8 @@ public class GameState extends State {
         player = new Player(game, game.width / 2, game.height+20);
         tickCount = 0;
         gam = game;
-        for(int x = 0; x < 7; x++){
-            addLC(100 + x*100);
+        for(int x = 0; x < 14; x++){
+            addLC(44 + x*50);
             
         }
         deathOccured = false;
@@ -101,13 +101,13 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics graph) {
-         for(int y = 0;y<7;y+=1){
+        /* for(int y = 0;y<7;y+=1){
             if(carlog.get(y).getLog()){
                 graph.setColor(Color.blue);
                 graph.fillRect(0, y*100+80, 1400, 100);
             
             }
-        }
+        }*/
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
             

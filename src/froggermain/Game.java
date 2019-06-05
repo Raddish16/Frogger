@@ -77,7 +77,7 @@ public class Game implements Runnable {
         graph.clearRect(0,0,width,height);
         
         //temp code to show graphics line
-        for(int y = 80;y<800;y+=100)
+        for(int y = 50;y<800;y+=50)
             graph.drawLine(0, y, width, y);
         
   
