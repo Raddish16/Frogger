@@ -148,6 +148,12 @@ public  class Player extends Creature{
     public String getKey(){
         return thisKey;
     }
+    public boolean getOnLog(){
+        if(onLeft || onRight){
+            return true;
+        }return false;
+        
+    }
     public BufferedImage loadDeath(){
         if(thisKey.equals("u")){
             return imageLoader.loadImage("/textures/FrogDead.png.png");

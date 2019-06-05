@@ -24,17 +24,25 @@ public class GameState extends State {
     private BufferedImage i;
     private BufferedImage i2;
     private Color road, water, end;
+    private ArrayList<Rectangle>rep;
     
     public GameState(Game game) {
         
         super(game);
-        player = new Player(game, game.width / 2, game.height+16);
+        player = new Player(game, game.width / 2, game.height+10);
         tickCount = 0;
         gam = game;
         for(int x = 0; x < 14; x++){
             addLC(44 + x*50);
             
         }
+        rep = new ArrayList<Rectangle>();
+        for(int y = 0;y<14;y+=1){
+            if(carlog.get(y).getLog()){
+                rep.add(new Rectangle(0, y*50+50, 1400, 50));
+            
+            }
+         }
         deathOccured = false;
         i = imageLoader.loadImage("/textures/FrogDead.png.png");
         i2 = imageLoader.loadImage("/textures/Tracks-1.png.png");
@@ -45,7 +53,7 @@ public class GameState extends State {
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
     public void tick() {
-
+        
         for (int x = 0; x < carlog.size(); x++) {
             carlog.get(x).tick();
         }
@@ -53,9 +61,8 @@ public class GameState extends State {
         for(LogCar l:carlog){
             float xHolder;
             float yHolder;
-            if (l.getBounds().intersects(player.getBounds())){
+            if (l.getBounds().intersects(player.getBounds()) || player.x == 0 || player.x == game.width -30 ){
                 if(!l.getLog()){    
-                    System.out.println("collide");
                     player.setInMove(false);
                     player.setCountZero();
                     deathOccured = true;
@@ -69,7 +76,7 @@ public class GameState extends State {
                     yHolder = 0;
 
 
-                    player.y = game.height+16;
+                    player.y = game.height+10;
                     player.x = game.width/2;
                 }
                 else{
@@ -88,7 +95,24 @@ public class GameState extends State {
             }
             
         }
-        //for spawing logcar, may need to move code to another class
+        for(Rectangle r:rep){
+            float xHolder;
+            float yHolder;
+            if(player.getBounds().intersects(r)&&!player.getInMove()&&!player.getOnLog()){
+                deathOccured = true;
+                i = player.loadDeath();
+
+                xHolder = player.x;
+                yHolder = player.y;
+                deathX = xHolder;
+                deathY = yHolder;
+                xHolder = 0;
+                yHolder = 0;
+
+                player.y = game.height+10;
+                player.x = game.width/2;
+            }
+        }
         tickCount++;
         for (int x = 0; x < carlog.size(); x++) {
             if(carlog.get(x).getX() > game.width && carlog.get(x).getDirection()){
