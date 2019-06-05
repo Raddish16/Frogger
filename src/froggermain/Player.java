@@ -45,22 +45,21 @@ public  class Player extends Creature{
             
             if(thisKey.equals("u")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
-                y-=5;
-                jumpDistance+=5;
+                y-=10;
             }if(thisKey.equals("d")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpDown.png.png");
-                y+=5;
+                y+=10;
             }if(thisKey.equals("l")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpLeft.png.png");
-                x-=5;
+                x-=10;
             }if(thisKey.equals("r")){
                 playerImage = imageLoader.loadImage("/textures/FrogJumpRight.png.png");
-                x+=5;
+                x+=10;
             }
             
             inMoveCount++;
             
-            if(inMoveCount>=10){
+            if(inMoveCount>=5){
                 
                 if(thisKey.equals("u")){
                     playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
