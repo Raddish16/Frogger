@@ -93,9 +93,8 @@ public class GameState extends State {
                 carlog.get(x).setX(game.width);
             }
         }
-        if(Math.random() > .995){
-            spawn();
-        }
+        spawn();
+        
         
     }
 
@@ -139,6 +138,7 @@ public class GameState extends State {
     public void spawn(){
         
         for (int x = 0; x < carlog.size(); x++) {
+            if(Math.random() > .995){
             if(carlog.get(x).getDirection() && carlog.get(x).getPAr() < 4 && carlog.get(x).getX() > 300){
                 LogCar saki = new LogCar(game, 0, carlog.get(x).getPosition(), carlog.get(x).getLog(), carlog.get(x).speed, carlog.get(x).getDirection());
                 saki.setX(0);
@@ -148,7 +148,7 @@ public class GameState extends State {
                 LogCar saki = new LogCar(game, game.width, carlog.get(x).getPosition(), carlog.get(x).getLog(), carlog.get(x).speed, carlog.get(x).getDirection());
                 saki.setX(game.width);
                 carlog.add(saki);
-            }
+            }}
         }
         
     }

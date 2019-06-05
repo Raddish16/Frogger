@@ -60,7 +60,7 @@ public  class Player extends Creature{
             
             inMoveCount++;
             
-            if(inMoveCount>=20){
+            if(inMoveCount>=10){
                 
                 if(thisKey.equals("u")){
                     playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
@@ -76,7 +76,7 @@ public  class Player extends Creature{
                 inMoveCount = 0;
             }
         }
-        if(game.getKeyManager().u&&!inMove&&tickCountMove>30)//keep in mind that the graph is inverted
+        if(game.getKeyManager().u&&!inMove&&tickCountMove>10)//keep in mind that the graph is inverted
         {
             thisKey = "u";
             inMove = true;
@@ -85,7 +85,7 @@ public  class Player extends Creature{
             onLeft = false;
             
         }
-        if(game.getKeyManager().d&&!inMove&&tickCountMove>30)
+        if(game.getKeyManager().d&&!inMove&&tickCountMove>10)
         {
             thisKey = "d";
             inMove = true;
@@ -93,7 +93,7 @@ public  class Player extends Creature{
             onRight = false;
             onLeft = false;
         }
-        if(game.getKeyManager().l&&!inMove&&tickCountMove>30)
+        if(game.getKeyManager().l&&!inMove&&tickCountMove>10)
         {
             thisKey = "l";
             inMove = true;
@@ -101,7 +101,7 @@ public  class Player extends Creature{
             onRight = false;
             onLeft = false;
         }
-        if(game.getKeyManager().r&&!inMove&&tickCountMove>30)
+        if(game.getKeyManager().r&&!inMove&&tickCountMove>10)
         {
             thisKey = "r";
             inMove = true;

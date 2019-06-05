@@ -24,7 +24,7 @@ public class LogCar extends Entity {
     public int every;
     public boolean moveRight;
     public boolean isAlive;
-    public int speed = (int) (Math.random() * 4) + 3;
+    public int speed = (int) (Math.random() * 5) + 2;
     public static int[] posarr = new int[800];
     private Rectangle r;
 
