@@ -49,7 +49,7 @@ public class GameState extends State {
         for(LogCar l:carlog){
             float xHolder;
             float yHolder;
-            if (l.getBounds().intersects(player.getBounds())){
+            if (l.getBounds().intersects(player.getBounds()) || player.x == 0 || player.x == game.width -30 ){
                 if(!l.getLog()){    
                     System.out.println("collide");
                     player.setInMove(false);
@@ -108,8 +108,6 @@ public class GameState extends State {
             }else if(!carlog.get(y).getLog()){
                 graph.setColor(Color.black);
                 graph.fillRect(0, y*50+50, 1400, 50);
-            
-                
         }}
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
