@@ -41,7 +41,10 @@ public class LogCar extends Entity {
 
         } else {
             isLog = false;
-            image = imageLoader.loadImage("/textures/car.png.png");
+            if(Math.random()>0.5)
+                image = imageLoader.loadImage("/textures/car.png.png");
+            else
+                image = imageLoader.loadImage("/textures/RedCarLeft.png");
 
         }
 
@@ -70,7 +73,10 @@ public class LogCar extends Entity {
         if (isLog) {
             image = imageLoader.loadImage("/textures/New Piskel-2.png");
         } else {
-            image = imageLoader.loadImage("/textures/car.png.png");
+            if(Math.random()>0.5)
+                image = imageLoader.loadImage("/textures/car.png.png");
+            else
+                image = imageLoader.loadImage("/textures/RedCarLeft.png");
         }
 
         if (isLog) {
@@ -95,7 +101,10 @@ public class LogCar extends Entity {
         if (isLog) {
             image = imageLoader.loadImage("/textures/New Piskel-2.png");
         } else {
-            image = imageLoader.loadImage("/textures/car.png.png");
+            if(Math.random()>0.5)
+                image = imageLoader.loadImage("/textures/car.png.png");
+            else
+                image = imageLoader.loadImage("/textures/RedCarLeft.png");
         }
 
         if (isLog) {
