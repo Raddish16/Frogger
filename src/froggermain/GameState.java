@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class GameState extends State {
 
     private Player player;
+    private Player_1 player2;
     private Game gam;
     ArrayList<LogCar> carlog = new ArrayList<LogCar>();
     private int tickCount;
@@ -30,6 +31,7 @@ public class GameState extends State {
         
         super(game);
         player = new Player(game, game.width / 2, game.height-38);
+        player2 = new Player_1(game, game.width / 2, game.height-38);
         tickCount = 0;
         gam = game;
         for(int x = 0; x < 14; x++){
@@ -58,6 +60,7 @@ public class GameState extends State {
             carlog.get(x).tick();
         }
         player.tick();
+        player2.tick();
         for(LogCar l:carlog){
             float xHolder;
             float yHolder;
@@ -96,6 +99,44 @@ public class GameState extends State {
             }
             
         }
+        for(LogCar l:carlog){
+            float xHolder;
+            float yHolder;
+            if (l.getBounds().intersects(player2.getBounds()) || player2.x == 0 || player2.x == game.width -30 ){
+                if(!l.getLog()){    
+                    player2.setInMove(false);
+                    player2.setCountZero();
+                    deathOccured = true;
+                    i = player2.loadDeath();
+
+                    xHolder = player.x;
+                    yHolder = player.y;
+                    deathX = xHolder;
+                    deathY = yHolder;
+                    xHolder = 0;
+                    yHolder = 0;
+
+
+                    player2.y = game.height-38;
+                    player2.x = game.width/2;
+                    player2.resetScore();
+                }
+                else{
+                    if(!player2.getInMove()){
+                        if (l.moveRight){
+                            player2.setOnLogSpeed(l);
+                            player2.setOnRight(true);
+                        }
+                        else{
+                            player2.setOnLogSpeed(l);
+                            player2.setOnLeft(true);
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
         for(Rectangle r:rep){
             float xHolder;
             float yHolder;
@@ -110,9 +151,28 @@ public class GameState extends State {
                 xHolder = 0;
                 yHolder = 0;
 
-                player.y = game.height+10;
+                player.y = game.height-38;
                 player.x = game.width/2;
                 player.resetScore();
+            }
+        }
+        for(Rectangle r:rep){
+            float xHolder;
+            float yHolder;
+            if(player2.getBounds().intersects(r)&&!player2.getInMove()&&!player2.getOnLog()){
+                deathOccured = true;
+                i = player2.loadDeath();
+
+                xHolder = player2.x;
+                yHolder = player2.y;
+                deathX = xHolder;
+                deathY = yHolder;
+                xHolder = 0;
+                yHolder = 0;
+
+                player2.y = game.height-38;
+                player2.x = game.width/2;
+                player2.resetScore();
             }
         }
         tickCount++;
@@ -156,6 +216,7 @@ public class GameState extends State {
             
         }
         player.render(graph);
+        player2.render(graph);
         graph.setColor(Color.white);
         graph.drawString("Score: "+player.getScore(), 50, 25);
         

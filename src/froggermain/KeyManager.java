@@ -15,7 +15,7 @@ import java.security.Key;
 
 public class KeyManager implements KeyListener {
 
-    public boolean u,d,l,r;
+    public boolean u,d,l,r,w,a,s,dLet;
 
     private boolean[] keys;
 
@@ -30,7 +30,10 @@ public class KeyManager implements KeyListener {
         d = keys[KeyEvent.VK_DOWN];
         l = keys[KeyEvent.VK_LEFT];
         r = keys[KeyEvent.VK_RIGHT];
-
+        w = keys[KeyEvent.VK_W];
+        a = keys[KeyEvent.VK_A];
+        s = keys[KeyEvent.VK_S];
+        dLet = keys[KeyEvent.VK_D];
     }
 
 
