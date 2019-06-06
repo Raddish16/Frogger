@@ -27,6 +27,7 @@ public class LogCar extends Entity {
     public int speed = (int) (Math.random() * 5) + 2;
     public static int[] posarr = new int[800];
     private Rectangle r;
+    public int lengthLog;
 
     public LogCar(Game game, float x, float y) {
         super(x, y);
@@ -38,6 +39,7 @@ public class LogCar extends Entity {
         if (rando >= .6) {
             isLog = true;
             image = imageLoader.loadImage("/textures/New Piskel-2.png");
+            lengthLog  = (int)Math.random()*3+1;
 
         } else {
             isLog = false;
