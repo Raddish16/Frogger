@@ -20,8 +20,8 @@ public class GameState extends State {
     private Game gam;
     ArrayList<LogCar> carlog = new ArrayList<LogCar>();
     private int tickCount;
-    private float deathX,deathY;
-    private boolean deathOccured;
+    private float deathX,deathY,deathX2,deathY2;
+    private boolean deathOccured, deathOccured2,win,win2;
     private BufferedImage i;
     private BufferedImage i2;
     private Color road, water, end;
@@ -30,8 +30,8 @@ public class GameState extends State {
     public GameState(Game game) {
         
         super(game);
-        player = new Player(game, game.width / 2, game.height-38);
-        player2 = new Player_1(game, game.width / 2, game.height-38);
+        player = new Player(game, game.width / 2+100, game.height-38);
+        player2 = new Player_1(game, game.width / 2-100, game.height-38);
         tickCount = 0;
         gam = game;
         for(int x = 0; x < 14; x++){
@@ -47,10 +47,13 @@ public class GameState extends State {
          }
         deathOccured = false;
         i = imageLoader.loadImage("/textures/FrogDead.png.png");
-        i2 = imageLoader.loadImage("/textures/Tracks-1.png.png");
+        i2 = imageLoader.loadImage("/textures/PurpFrogDead.png");
         road = new Color(32,32,32);
         water = new Color(0,0,204);
         end = new Color(0,204,0);
+        win = false;
+        win2 = false;
+        
     }
 
     @Override//not neccesary but informs compiler of overidden method, may prevent error
@@ -61,6 +64,7 @@ public class GameState extends State {
         }
         player.tick();
         player2.tick();
+        //does player1 hit log
         for(LogCar l:carlog){
             float xHolder;
             float yHolder;
@@ -80,7 +84,7 @@ public class GameState extends State {
 
 
                     player.y = game.height-38;
-                    player.x = game.width/2;
+                    player.x = game.width/2+100;
                     player.resetScore();
                 }
                 else{
@@ -99,6 +103,7 @@ public class GameState extends State {
             }
             
         }
+        //does player2 hit log
         for(LogCar l:carlog){
             float xHolder;
             float yHolder;
@@ -106,19 +111,19 @@ public class GameState extends State {
                 if(!l.getLog()){    
                     player2.setInMove(false);
                     player2.setCountZero();
-                    deathOccured = true;
-                    i = player2.loadDeath();
+                    deathOccured2 = true;
+                    i2 = player2.loadDeath();
 
-                    xHolder = player.x;
-                    yHolder = player.y;
-                    deathX = xHolder;
-                    deathY = yHolder;
+                    xHolder = player2.x;
+                    yHolder = player2.y;
+                    deathX2 = xHolder;
+                    deathY2 = yHolder;
                     xHolder = 0;
                     yHolder = 0;
 
 
                     player2.y = game.height-38;
-                    player2.x = game.width/2;
+                    player2.x = game.width/2-100;
                     player2.resetScore();
                 }
                 else{
@@ -137,6 +142,7 @@ public class GameState extends State {
             }
             
         }
+        //does player1 hit water
         for(Rectangle r:rep){
             float xHolder;
             float yHolder;
@@ -152,29 +158,37 @@ public class GameState extends State {
                 yHolder = 0;
 
                 player.y = game.height-38;
-                player.x = game.width/2;
+                player.x = game.width/2+100;
                 player.resetScore();
             }
         }
+        //does player2 hit water
         for(Rectangle r:rep){
             float xHolder;
             float yHolder;
             if(player2.getBounds().intersects(r)&&!player2.getInMove()&&!player2.getOnLog()){
-                deathOccured = true;
-                i = player2.loadDeath();
+                deathOccured2 = true;
+                i2 = player2.loadDeath();
 
                 xHolder = player2.x;
                 yHolder = player2.y;
-                deathX = xHolder;
-                deathY = yHolder;
+                deathX2 = xHolder;
+                deathY2 = yHolder;
                 xHolder = 0;
                 yHolder = 0;
 
                 player2.y = game.height-38;
-                player2.x = game.width/2;
+                player2.x = game.width/2-100;
                 player2.resetScore();
             }
         }
+        
+        Rectangle end = new Rectangle(0,0,1400,50);
+        if(player.getBounds().intersects(end)&&!player.getInMove())
+            win = true;
+        if(player2.getBounds().intersects(end)&&!player2.getInMove())
+            win2 = true;
+        
         tickCount++;
         for (int x = 0; x < carlog.size(); x++) {
             if(carlog.get(x).getX() > game.width && carlog.get(x).getDirection()){
@@ -190,6 +204,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics graph) {
+
          for(int y = 0;y<14;y+=1){
             if(carlog.get(y).getLog()){
                 graph.setColor(water);
@@ -208,8 +223,12 @@ public class GameState extends State {
         if(deathOccured){
             graph.drawImage(i,(int)deathX,(int)deathY,null);
             
-            //looks weird for now
-            //graph.drawImage(i2,(int)deathX,(int)deathY,null);
+           
+        }
+        if(deathOccured2){
+            graph.drawImage(i2,(int)deathX2,(int)deathY2,null);
+            
+            
         }
         for (int x = 0; x < carlog.size(); x++) {
             carlog.get(x).render(graph);
@@ -218,7 +237,14 @@ public class GameState extends State {
         player.render(graph);
         player2.render(graph);
         graph.setColor(Color.white);
-        graph.drawString("Score: "+player.getScore(), 50, 25);
+        graph.drawString("Green Score: "+player.getScore(), 1300, 25);
+        graph.drawString("Purple Score: "+player2.getScore(), 50, 25);
+        if(getWin()){
+            graph.drawString("Green Wins", 700, 400);
+        }
+        if(getWin2()){
+            graph.drawString("Purple Wins", 700, 400);
+        }
         
     }
 
@@ -252,5 +278,17 @@ public class GameState extends State {
             }}
         }
         
+    }
+    public boolean getWin(){
+        if(win&&!win2)
+            return win;
+        else
+            return false;
+    }
+    public boolean getWin2(){
+        if(win2&&!win)
+            return win2;
+        else
+            return false;
     }
 }

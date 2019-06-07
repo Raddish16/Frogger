@@ -27,7 +27,7 @@ public  class Player_1 extends Creature{
     public Player_1(Game game, float x, float y) {
         super(x, y);
         this.game = game;
-        playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
+        playerImage = imageLoader.loadImage("/textures/PurpFrog.png");
         tickCountMove = 40;
         inMove = false;
         inMoveCount = 0;
@@ -44,16 +44,16 @@ public  class Player_1 extends Creature{
         if(inMove){
             
             if(thisKey.equals("u")){
-                playerImage = imageLoader.loadImage("/textures/FrogJumping.png");
+                playerImage = imageLoader.loadImage("/textures/PurpFrogJump.png");
                 y-=10;
             }if(thisKey.equals("d")){
-                playerImage = imageLoader.loadImage("/textures/FrogJumpDown.png.png");
+                playerImage = imageLoader.loadImage("/textures/PurpFrogJumpD.png");
                 y+=10;
             }if(thisKey.equals("l")){
-                playerImage = imageLoader.loadImage("/textures/FrogJumpLeft.png.png");
+                playerImage = imageLoader.loadImage("/textures/PurpFrogJumpL.png");
                 x-=10;
             }if(thisKey.equals("r")){
-                playerImage = imageLoader.loadImage("/textures/FrogJumpRight.png.png");
+                playerImage = imageLoader.loadImage("/textures/PurpFrogJumpR.png");
                 x+=10;
             }
             
@@ -62,13 +62,13 @@ public  class Player_1 extends Creature{
             if(inMoveCount>=5){
                 
                 if(thisKey.equals("u")){
-                    playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
+                    playerImage = imageLoader.loadImage("/textures/PurpFrog.png");
                 }if(thisKey.equals("d")){
-                    playerImage = imageLoader.loadImage("/textures/FrogDown.png.png");
+                    playerImage = imageLoader.loadImage("/textures/PurpFrogD.png");
                 }if(thisKey.equals("l")){
-                    playerImage = imageLoader.loadImage("/textures/FrogLeft.png.png");
+                    playerImage = imageLoader.loadImage("/textures/PurpFrogL.png");
                 }if(thisKey.equals("r")){
-                    playerImage = imageLoader.loadImage("/textures/FrogRight.png.png");
+                    playerImage = imageLoader.loadImage("/textures/PurpFrogR.png");
                 }
                 
                 inMove = false;
@@ -156,13 +156,13 @@ public  class Player_1 extends Creature{
     }
     public BufferedImage loadDeath(){
         if(thisKey.equals("u")){
-            return imageLoader.loadImage("/textures/FrogDead.png.png");
+            return imageLoader.loadImage("/textures/PurpFrogDead.png");
         }if(thisKey.equals("d")){
-            return imageLoader.loadImage("/textures/FrogDeadDown.png");    
+            return imageLoader.loadImage("/textures/PurpFrogDeadD.png");    
         }if(thisKey.equals("l")){
-            return imageLoader.loadImage("/textures/FrogDeadLeft.png");    
+            return imageLoader.loadImage("/textures/PurpFrogDeadL.png");    
         }if(thisKey.equals("r")){
-            return imageLoader.loadImage("/textures/FrogDeadRight.png");    
+            return imageLoader.loadImage("/textures/PurpFrogDeadR.png");    
         }return imageLoader.loadImage("/textures/FrogDead.png.png");
         
     }
